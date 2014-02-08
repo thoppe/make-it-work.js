@@ -7,6 +7,9 @@ view:
 css:
 	emacs css/main.css &
 
+js:
+	emacs miw.js &
+
 commit:
 	@-make push
 

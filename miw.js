@@ -1,29 +1,39 @@
 var target_width = 400;
 
+var height_marker;
 
-window.onload = function() {
-    size_drawbox();
+$(document).ready(function() {
 
+    console.log("document ready");
     var boxes = $("#drawbox").children('.box');
 
-    /* Set the hooks and make the boxes editable */
+    // Set the hooks and make the boxes editable 
     boxes.each(function() { 
 	b = $(this)
 	b.attr('contenteditable', true);
 	b.attr('spellcheck', false);
 	b.on("keyup", size_drawbox);
     });
-}
+    size_drawbox();
 
+});
 
-var height_marker;
+$(window).on("load", function() { 
+    console.log("doc load"); 
+    size_drawbox();
+});
 
 function size_drawbox() {
+    console.log("start draw");
+
     height_marker = 0;
     var boxes = $("#drawbox").children('.box');
     boxes.each(remove_empty);
     boxes.each(size_width);
+
+    console.log("end draw");
 }
+
 
 function remove_empty() {
     var text = $(this).text().trim();
@@ -45,7 +55,7 @@ function size_width() {
     ele.css({top:height_marker});
 
     height_marker += scale*dims.h;
-    //console.log(height_marker);
+    console.log(height_marker);
 }
 
 function measure(ele) {
