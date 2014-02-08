@@ -1,0 +1,48 @@
+@import url("roboto.css");
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+#title h1 {
+    font-style: normal;
+    font-size: 2em;
+    letter-spacing: 1px;
+}
+
+#title h1 em {
+    letter-spacing: -2px;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 160%;
+}
+
+
+#drawbox {
+    width:400px;    
+    position:absolute;
+    display:block;
+}
+
+.box {
+    -webkit-transform-origin:0% 0%; /* Safari and Chrome */
+    position:absolute;
+    line-height:1.0em;
+
+    opacity:.75;
+    display:inline-block;
+
+    white-space: nowrap;
+    outline:0px solid transparent;
+}
+
+.blue {
+    background:rgb(55,130,135);
+}
+
+.red {
+    background:rgb(228,29,107);
+}
+
+
