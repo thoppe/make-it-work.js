@@ -6,12 +6,8 @@ $(document).ready(function() {
     var boxes = $("#drawbox").children('.box');
 
     // Set the hooks and make the boxes editable 
-    boxes.each(function() { 
-	b = $(this)
-	b.attr('contenteditable', true);
-	b.attr('spellcheck', false);
-	b.on("keyup", size_drawbox);
-    });
+    boxes.each(function() {set_box_attr($(this));});
+    // boxes.each(set_box_attr);
     size_drawbox();
 });
 
@@ -19,6 +15,32 @@ $(window).on("load", function() {
     console.log("doc load"); 
     size_drawbox();
 });
+
+function set_box_attr(ele) {
+    ele.attr('contenteditable', true);
+    ele.attr('spellcheck', false);
+    ele.on("keypress", check_add_box);
+    ele.on("input", size_drawbox);
+};
+
+
+// On enter, adds an extra line 
+default_line_text = "empty text line";
+
+function check_add_box(event) {
+    if(event.which == 13) {
+	event.preventDefault(); // Suppress the enter
+
+	var ele = $('<div class="box"></div>');
+	ele.text(default_line_text);
+	set_box_attr(ele);
+
+	// Set the focus to the newline
+	$(this).after(ele);
+	ele.focus();
+	size_drawbox();
+    }
+}
 
 function size_drawbox() {
     height_marker = 0;
@@ -52,7 +74,7 @@ function size_width() {
     ele.css({top:height_marker});
 
     height_marker += scale*dims.h;
-    console.log(height_marker);
+    // console.log(height_marker);
 }
 
 function measure(ele) {
