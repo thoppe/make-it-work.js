@@ -7,12 +7,6 @@ body {
 }
 
 /* Header */
-header {
-    width: 100%;
-    margin-left:20%;
-    position:relative;
-}
-
 header h1 {
     font-style: normal;
     font-size: 2em;
@@ -26,37 +20,41 @@ header h1 em {
     font-size: 160%;
 }
 
-.drawstyle {
-    width: 100%;
-    margin-left:20%;
-    margin-right:0%;
+.contents {
+    margin-left:15%;
+    margin-right:15%;
 }
 
 
 #drawbox {
-    width:50%;    
+    width:70%;    
     position:absolute;
-    display:block;
+    display:inline-block;
 }
 
 .box {
     -webkit-transform-origin:0% 0%; /* Safari and Chrome */
     position:absolute;
-    line-height:1.25em;
-
-    opacity:.75;
     display:inline-block;
 
     white-space: nowrap;
     outline:0px solid transparent;
 }
 
-.blue {
+
+/* Alternating colors on the table */
+
+.shiny {
+    line-height:1.25em;
+    opacity:.75;
+}
+
+/*
+.shiny:nth-child(even) {
     background:rgb(55,130,135);
 }
+*/
 
-.red {
+.shiny :nth-child(even) {
     background:rgb(228,29,107);
 }
-
-

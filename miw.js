@@ -16,6 +16,8 @@ $(window).on("load", function() {
     size_drawbox();
 });
 
+$(window).resize( size_drawbox );
+
 function set_box_attr(ele) {
     ele.attr('contenteditable', true);
     ele.attr('spellcheck', false);
