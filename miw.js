@@ -3,6 +3,16 @@ var target_width = 400;
 
 window.onload = function() {
     size_drawbox();
+
+    var boxes = $("#drawbox").children('.box');
+
+    /* Set the hooks and make the boxes editable */
+    boxes.each(function() { 
+	b = $(this)
+	b.attr('contenteditable', true);
+	b.attr('spellcheck', false);
+	b.on("keyup", size_drawbox);
+    });
 }
 
 
@@ -13,15 +23,8 @@ function size_drawbox() {
     var boxes = $("#drawbox").children('.box');
 
     boxes.each(size_width);
-    boxes.each(function() { 
-	b = $(this)
-	b.attr('contenteditable', true);
-	b.attr('spellcheck', false);
-	b.change(size_drawbox);
-    });
 }
 
-$("#drawbox").change(size_drawbox);
 
 function size_width() {
     ele = $(this);
