@@ -1,5 +1,3 @@
-var target_width = 400;
-
 var height_marker;
 
 $(document).ready(function() {
@@ -15,7 +13,6 @@ $(document).ready(function() {
 	b.on("keyup", size_drawbox);
     });
     size_drawbox();
-
 });
 
 $(window).on("load", function() { 
@@ -24,14 +21,11 @@ $(window).on("load", function() {
 });
 
 function size_drawbox() {
-    console.log("start draw");
-
     height_marker = 0;
-    var boxes = $("#drawbox").children('.box');
+    var target = $("#drawbox");
+    var boxes = target.children('.box');
     boxes.each(remove_empty);
     boxes.each(size_width);
-
-    console.log("end draw");
 }
 
 
@@ -49,6 +43,9 @@ function remove_empty() {
 
 function size_width() {
     ele = $(this);
+    parent = ele.closest("#drawbox");
+    target_width = parent.width();
+    
     var dims = measure(ele);
     var scale = target_width/dims.w;
     ele.css({transform:'scale('+scale+')'});  
