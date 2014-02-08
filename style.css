@@ -1,3 +1,7 @@
+body {
+    font-family: "Helvetica";
+}
+
 #drawbox {
     width:400px;    
     position:absolute;

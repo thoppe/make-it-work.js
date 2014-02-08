@@ -29,7 +29,7 @@ function remove_empty() {
     var text = $(this).text().trim();
    
     if (text == '') {
-	console.log("DEATH");
+	console.log("Killed a div");
 	$(this).remove();
 	size_drawbox();
     }
