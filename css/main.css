@@ -33,9 +33,8 @@ header h1 em {
 }
 
 
-
 #drawbox {
-    width:60%;    
+    width:50%;    
     position:absolute;
     display:block;
 }
@@ -43,7 +42,7 @@ header h1 em {
 .box {
     -webkit-transform-origin:0% 0%; /* Safari and Chrome */
     position:absolute;
-    line-height:1.0em;
+    line-height:1.25em;
 
     opacity:.75;
     display:inline-block;

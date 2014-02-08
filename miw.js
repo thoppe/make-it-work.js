@@ -67,6 +67,7 @@ function size_width() {
     ele = $(this);
     parent = ele.closest("#drawbox");
     target_width = parent.width();
+    console.log(target_width);
     
     var dims = measure(ele);
     var scale = target_width/dims.w;
