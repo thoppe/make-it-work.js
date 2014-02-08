@@ -12,6 +12,8 @@
     display:inline-block;
     position:absolute;
     white-space: nowrap;
+
+    outline:0px solid transparent;
 }
 
 .blue {

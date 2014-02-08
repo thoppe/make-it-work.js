@@ -10,8 +10,18 @@ var height_marker;
 
 function size_drawbox() {
     height_marker = 0;
-    $("#drawbox").children('.box').each(size_width);
+    var boxes = $("#drawbox").children('.box');
+
+    boxes.each(size_width);
+    boxes.each(function() { 
+	b = $(this)
+	b.attr('contenteditable', true);
+	b.attr('spellcheck', false);
+	b.change(size_drawbox);
+    });
 }
+
+$("#drawbox").change(size_drawbox);
 
 function size_width() {
     ele = $(this);
