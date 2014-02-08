@@ -1,0 +1,25 @@
+#drawbox {
+    width:400px;    
+    position:absolute;
+    display:block;
+}
+
+.box {
+    line-height:1.0em;
+
+    -webkit-transform-origin:0% 0%; /* Safari and Chrome */
+    opacity:.75;
+    display:inline-block;
+    position:absolute;
+    white-space: nowrap;
+}
+
+.blue {
+    background:rgb(55,130,135);
+}
+
+.red {
+    background:rgb(228,29,107);
+}
+
+
