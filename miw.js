@@ -21,8 +21,19 @@ var height_marker;
 function size_drawbox() {
     height_marker = 0;
     var boxes = $("#drawbox").children('.box');
-
+    boxes.each(remove_empty);
     boxes.each(size_width);
+}
+
+function remove_empty() {
+    var text = $(this).text().trim();
+   
+    if (text == '') {
+	console.log("DEATH");
+	$(this).remove();
+	size_drawbox();
+    }
+
 }
 
 
@@ -34,7 +45,7 @@ function size_width() {
     ele.css({top:height_marker});
 
     height_marker += scale*dims.h;
-    console.log(height_marker);
+    //console.log(height_marker);
 }
 
 function measure(ele) {
