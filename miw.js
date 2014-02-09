@@ -6,7 +6,6 @@ $(document).ready(function() {
 
     // Set the hooks and make the boxes editable 
     boxes.each(function() {set_box_attr($(this));});
-    // boxes.each(set_box_attr);
     size_drawbox();
 });
 
@@ -18,6 +17,13 @@ $(window).on("load", function() {
 $(window).resize( size_drawbox );
 
 function set_box_attr(ele) {
+    ele.css('position', "absolute");
+    ele.css('white-space', "nowrap");
+    ele.css('outline', "0px solid transparent");
+
+    /* Safari and Chrome */
+    ele.css("-webkit-transform-origin","0% 0%");
+
     ele.attr('contenteditable', true);
     ele.attr('spellcheck', false);
     ele.on("keypress", check_add_box);

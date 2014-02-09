@@ -49,13 +49,6 @@ footer h1 {
     position:relative;
 }
 
-.box {
-    -webkit-transform-origin:0% 0%; /* Safari and Chrome */
-    position:absolute;
-    white-space: nowrap;
-    outline:0px solid transparent;
-}
-
 
 /* Alternating colors on the table */
 
