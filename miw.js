@@ -49,15 +49,16 @@ function check_add_box(event) {
 
 	var ele = $('<div class="box"></div>');
 	ele.text(default_line_text);
-
-	// Set the focus to the newline
 	$(this).after(ele);
 	set_box_attr(ele);
-	ele.focus();
 
+	// Set the focus to the newline
+	ele.focus();
 	size_drawbox();
     }
 }
+
+
 
 function size_drawbox() {
 
@@ -65,8 +66,16 @@ function size_drawbox() {
     $(".drawbox").each(function(i,x) {
 	var boxes = $(this).children('.box');
 	boxes.each(remove_empty);
+	
+	// If we've removed _everything_ add an empty box
+	if(boxes.length==0) {
+	    var ele = $('<div class="box"></div>');
+	    ele.text(default_line_text);
+	    $(this).append(ele);
+	    set_box_attr(ele);
+	    boxes = $(this).children('.box');
+	}
 
-	console.log("starting size/w ",i,$(this).width());
 	height_marker = 0;
 	boxes.each(size_width);
 	$(this).height(height_marker);
