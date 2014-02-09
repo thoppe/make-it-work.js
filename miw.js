@@ -39,16 +39,20 @@ function set_box_attr(ele) {
 
 };
 
+default_line_text = "empty text line";
+function empty_box() {
+    var ele = $('<div class="box"></div>');
+    ele.text(default_line_text);
+    return ele;
+}
+
 
 // On enter, adds an extra line 
-default_line_text = "empty text line";
-
 function check_add_box(event) {
     if(event.which == 13) {
 	event.preventDefault(); // Suppress the enter
 
-	var ele = $('<div class="box"></div>');
-	ele.text(default_line_text);
+	ele = empty_box();
 	$(this).after(ele);
 	set_box_attr(ele);
 
@@ -65,14 +69,14 @@ function size_drawbox() {
     // Loop over the drawboxes
     $(".drawbox").each(function(i,x) {
 	var boxes = $(this).children('.box');
-	boxes.each(remove_empty);
+	boxes.each(remove_if_empty);
 	
 	// If we've removed _everything_ add an empty box
 	if(boxes.length==0) {
-	    var ele = $('<div class="box"></div>');
-	    ele.text(default_line_text);
-	    $(this).append(ele);
+	    ele = empty_box();
 	    set_box_attr(ele);
+	    $(this).append(ele);
+
 	    boxes = $(this).children('.box');
 	}
 
@@ -84,7 +88,7 @@ function size_drawbox() {
 }
 
 // Remove a box if the contents are empty
-function remove_empty() {
+function remove_if_empty() {
     if ($(this).text() == '') {
 	$(this).remove();
 	size_drawbox();
