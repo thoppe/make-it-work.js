@@ -1,6 +1,6 @@
+/* Page layout */
 @import url("roboto.css");
 
-/* Page layout */
 body {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -42,14 +42,6 @@ footer h1 {
     font-size: 1.5em;
 }
 
-
-/* make-it-work styles */
-
-#drawbox {
-    position:relative;
-}
-
-
 /* Alternating colors on the table */
 
 .shiny {
@@ -60,11 +52,4 @@ footer h1 {
 
 .shiny :nth-child(even) {
     background:rgb(228,29,107);
-}
-
-.footer {
-    font-weight: 300;
-    background: #222;
-    padding: 80px 0;
-    color: #fff;
 }

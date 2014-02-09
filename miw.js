@@ -2,6 +2,10 @@ var height_marker;
 
 $(document).ready(function() {
     console.log("document ready");
+
+    // Set position style for the drawbow
+    $("#drawbox").css("position","relative");
+
     var boxes = $("#drawbox").children('.box');
 
     // Set the hooks and make the boxes editable 
