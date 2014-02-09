@@ -21,15 +21,17 @@ $(window).on("load", function() {
 $(window).resize( size_drawbox );
 
 function set_box_attr(ele) {
-    ele.css('position', "absolute");
-    ele.css('white-space', "nowrap");
-    ele.css('outline', "0px solid transparent");
+    ele.css({"position":"absolute",
+	     "white-space":"nowrap",
+	     "outline":"0px solid transparent"});
 
     /* Safari and Chrome */
     ele.css("-webkit-transform-origin","0% 0%");
 
-    ele.attr('contenteditable', true);
-    ele.attr('spellcheck', false);
+    ele.attr({
+	contenteditable:true,
+	spellcheck:false});
+
     ele.on("keypress", check_add_box);
     ele.on("input", size_drawbox);
 };
