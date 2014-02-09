@@ -102,12 +102,14 @@ function transform_origin(ele, x_pct, y_pct) {
     ele.css("transform-origin",coords);
     ele.css("-webkit-transform-origin",coords);
     ele.css("-ms-transform-origin",coords);
+    ele.css("-o-transform-origin",coords);
 }
 
 function transform_scale(ele, scale) {
     var coords = 'scale('+scale+')';
     ele.css({"-webkit-transform":coords});
     ele.css({"-ms-transform":coords});
+    ele.css({"-o-transform":coords});
     ele.css({"transform":coords});
 }
 
