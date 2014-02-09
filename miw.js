@@ -3,12 +3,12 @@ var height_marker;
 $(document).ready(function() {
 
     // Set position style for the drawbox
-    $("#drawbox").css("position","relative");
-
-    var boxes = $("#drawbox").children('.box');
+    $(".drawbox").css("position","relative");
 
     // Set the hooks and make the boxes editable 
-    boxes.each(function() {set_box_attr($(this));});
+    $(".drawbox .box").each(function() {
+	set_box_attr($(this));});
+
     size_drawbox();
 }); 
 
@@ -27,7 +27,7 @@ function set_box_attr(ele) {
 
     transform_origin(ele,0,0);
 
-    parent = ele.closest("#drawbox");
+    parent = ele.closest(".drawbox");
     if(parent.hasClass("editable")) {
 	ele.attr({
 	    contenteditable:true,
@@ -60,14 +60,18 @@ function check_add_box(event) {
 }
 
 function size_drawbox() {
-    var target = $("#drawbox");
-    var boxes = target.children('.box');
-    boxes.each(remove_empty);
 
-    height_marker = 0;
-    boxes.each(size_width);
+    // Loop over the drawboxes
+    $(".drawbox").each(function(i,x) {
+	var boxes = $(this).children('.box');
+	boxes.each(remove_empty);
 
-    target.height(height_marker);
+	console.log("starting size/w ",i,$(this).width());
+	height_marker = 0;
+	boxes.each(size_width);
+	$(this).height(height_marker);
+    });
+
 }
 
 // Remove a box if the contents are empty
@@ -78,10 +82,9 @@ function remove_empty() {
     }
 }
 
-
 function size_width() {
     ele = $(this);
-    parent = ele.closest("#drawbox");
+    parent = ele.closest(".drawbox");
     target_width = parent.width();
     
     var scale = target_width/ele.width();

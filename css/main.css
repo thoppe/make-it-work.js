@@ -13,7 +13,21 @@ body {
     margin-right:25%;
 }
 
-/* Header */
+/* Sig & Header */
+
+.sig {
+    width: 60%;
+    max-width:300px;
+    min-width:150px;
+    margin-bottom:10%;
+    line-height:.25em;
+}
+.sig a
+{
+    text-decoration:none;
+}
+
+header { } 
 
 header h1 {
     font-size: 2em;
