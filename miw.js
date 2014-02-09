@@ -2,7 +2,7 @@ var height_marker;
 
 $(document).ready(function() {
 
-    // Set position style for the drawbow
+    // Set position style for the drawbox
     $("#drawbox").css("position","relative");
 
     var boxes = $("#drawbox").children('.box');
@@ -10,7 +10,7 @@ $(document).ready(function() {
     // Set the hooks and make the boxes editable 
     boxes.each(function() {set_box_attr($(this));});
     size_drawbox();
-});
+}); 
 
 $(window).on("load", function() { 
     console.log("Starting make-it-work.js initial resize"); 
@@ -20,18 +20,23 @@ $(window).on("load", function() {
 $(window).resize( size_drawbox );
 
 function set_box_attr(ele) {
+
     ele.css({"position":"absolute",
 	     "white-space":"nowrap",
 	     "outline":"0px solid transparent"});
 
     transform_origin(ele,0,0);
- 
-    ele.attr({
-	contenteditable:true,
-	spellcheck:false});
 
-    ele.on("keypress", check_add_box);
-    ele.on("input", size_drawbox);
+    parent = ele.closest("#drawbox");
+    if(parent.hasClass("editable")) {
+	ele.attr({
+	    contenteditable:true,
+	    spellcheck:false});
+
+	ele.on("keypress", check_add_box);
+	ele.on("input", size_drawbox);
+    }
+
 };
 
 
@@ -44,11 +49,12 @@ function check_add_box(event) {
 
 	var ele = $('<div class="box"></div>');
 	ele.text(default_line_text);
-	set_box_attr(ele);
 
 	// Set the focus to the newline
 	$(this).after(ele);
+	set_box_attr(ele);
 	ele.focus();
+
 	size_drawbox();
     }
 }
