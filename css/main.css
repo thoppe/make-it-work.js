@@ -1,9 +1,15 @@
 @import url("roboto.css");
 
+/* Page layout */
 body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-style: normal;
+}
+
+.contents {
+    margin-left:20%;
+    margin-right:20%;
 }
 
 /* Header */
@@ -20,23 +26,16 @@ header h1 em {
     font-size: 160%;
 }
 
-.contents {
-    margin-left:15%;
-    margin-right:15%;
-}
 
+/* make-it-work styles */
 
 #drawbox {
-    width:70%;    
-    position:absolute;
-    display:inline-block;
+    position:relative;
 }
 
 .box {
     -webkit-transform-origin:0% 0%; /* Safari and Chrome */
     position:absolute;
-    display:inline-block;
-
     white-space: nowrap;
     outline:0px solid transparent;
 }
@@ -49,12 +48,13 @@ header h1 em {
     opacity:.75;
 }
 
-/*
-.shiny:nth-child(even) {
-    background:rgb(55,130,135);
-}
-*/
-
 .shiny :nth-child(even) {
     background:rgb(228,29,107);
+}
+
+.footer {
+    font-weight: 300;
+    background: #222;
+    padding: 80px 0;
+    color: #fff;
 }
