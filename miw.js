@@ -33,7 +33,7 @@ function set_box_attr(ele) {
 	    contenteditable:true,
 	    spellcheck:false});
 
-	ele.on("keypress", check_add_box);
+	ele.on("keypress", box_keypress);
 	ele.on("input", size_drawbox);
     }
 
@@ -47,17 +47,17 @@ function empty_box() {
 }
 
 
-// On enter, adds an extra line 
-function check_add_box(event) {
+function box_keypress(event) {
+
+    // On enter, adds an extra line 
     if(event.which == 13) {
 	event.preventDefault(); // Suppress the enter
 
-	ele = empty_box();
-	$(this).after(ele);
+	// Add a new empty box
+	ele = $(this).after(empty_box()).next();
 	set_box_attr(ele);
-
-	// Set the focus to the newline
 	ele.focus();
+
 	size_drawbox();
     }
 }
@@ -74,9 +74,8 @@ function size_drawbox() {
 	// If we've removed _everything_ add an empty box
 	if(boxes.length==0) {
 	    ele = empty_box();
-	    set_box_attr(ele);
 	    $(this).append(ele);
-
+	    set_box_attr(ele);
 	    boxes = $(this).children('.box');
 	}
 
@@ -87,9 +86,18 @@ function size_drawbox() {
 
 }
 
+function find_neighbor(ele) {
+    if( ele.next().length ) { return ele.next(); };
+    return ele.prev();
+}
+
 // Remove a box if the contents are empty
 function remove_if_empty() {
     if ($(this).text() == '') {
+
+	// Set the focus on a good neighbor
+	find_neighbor($(this)).focus();
+
 	$(this).remove();
 	size_drawbox();
     }
