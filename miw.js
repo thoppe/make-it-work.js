@@ -33,7 +33,7 @@ function set_box_attr(ele) {
 	    contenteditable:true,
 	    spellcheck:false});
 
-	ele.on("keypress", box_keypress);
+	ele.on("keydown", box_keydown);
 	ele.on("input", size_drawbox);
     }
 
@@ -47,7 +47,7 @@ function empty_box() {
 }
 
 
-function box_keypress(event) {
+function box_keydown(event) {
 
     // On enter, adds an extra line 
     if(event.which == 13) {
@@ -60,8 +60,17 @@ function box_keypress(event) {
 
 	size_drawbox();
     }
-}
 
+    if(event.which == 38) {
+	event.preventDefault();
+	$(this).prev().focus();
+    }
+
+    if(event.which == 40) {
+	event.preventDefault(); // Suppress the up arrow
+	$(this).next().focus();
+    }
+}
 
 
 function size_drawbox() {
