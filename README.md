@@ -2,4 +2,4 @@
 
 A small javascript library that uses webkit-transforms to adjust content size to fit beautifully. 
 
-See it [live](#).
+See it [live](http://thoppe.github.io/make-it-work/).

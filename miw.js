@@ -56,14 +56,10 @@ function size_drawbox() {
 
 // Remove a box if the contents are empty
 function remove_empty() {
-    var text = $(this).text().trim();
-   
-    if (text == '') {
-	//console.log("Removed a box");
+    if ($(this).text() == '') {
 	$(this).remove();
 	size_drawbox();
     }
-
 }
 
 
