@@ -15,20 +15,13 @@ body {
 
 /* Header */
 header h1, header h2 {
-    font-style: normal;
-    letter-spacing: 1px;
 }
 
 header h1 {
     font-size: 2em;
-}
-
-header h2 {
-    font-weight: 300;
     font-style: normal;
-    font-size: 1.5em;
+    letter-spacing: 1px;
 }
-
 
 header h1 em {
     letter-spacing: -2px;
@@ -39,6 +32,14 @@ header h1 em {
 
 header a {
     text-decoration:none;
+    color:inherit;
+}
+
+/* Footer */
+footer h1 {
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.5em;
 }
 
 
