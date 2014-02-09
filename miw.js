@@ -25,9 +25,8 @@ function set_box_attr(ele) {
 	     "white-space":"nowrap",
 	     "outline":"0px solid transparent"});
 
-    /* Safari and Chrome */
-    ele.css("-webkit-transform-origin","0% 0%");
-
+    transform_origin(ele,0,0);
+ 
     ele.attr({
 	contenteditable:true,
 	spellcheck:false});
@@ -82,7 +81,7 @@ function size_width() {
     
     var dims = measure(ele);
     var scale = target_width/dims.w;
-    ele.css({transform:'scale('+scale+')'});  
+    transform_scale(ele, scale);
     ele.css({top:height_marker});
 
     height_marker += scale*dims.h;
@@ -95,3 +94,22 @@ function measure(ele) {
     
     return {w:w, h:h,a:w/h};
 }
+
+/* Cross browser CSS3 functions */                 
+
+function transform_origin(ele, x_pct, y_pct) {
+    var coords = x_pct + "% " + y_pct + "%";
+    ele.css("transform-origin",coords);
+    ele.css("-webkit-transform-origin",coords);
+    ele.css("-ms-transform-origin",coords);
+}
+
+function transform_scale(ele, scale) {
+    var coords = 'scale('+scale+')';
+    ele.css({"-webkit-transform":coords});
+    ele.css({"-ms-transform":coords});
+    ele.css({"transform":coords});
+}
+
+
+
