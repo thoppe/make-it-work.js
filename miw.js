@@ -1,7 +1,6 @@
 var height_marker;
 
 $(document).ready(function() {
-    console.log("document ready");
 
     // Set position style for the drawbow
     $("#drawbox").css("position","relative");
@@ -14,7 +13,7 @@ $(document).ready(function() {
 });
 
 $(window).on("load", function() { 
-    console.log("doc load"); 
+    console.log("Starting make-it-work.js initial resize"); 
     size_drawbox();
 });
 
@@ -79,20 +78,11 @@ function size_width() {
     parent = ele.closest("#drawbox");
     target_width = parent.width();
     
-    var dims = measure(ele);
-    var scale = target_width/dims.w;
+    var scale = target_width/ele.width();
     transform_scale(ele, scale);
     ele.css({top:height_marker});
 
-    height_marker += scale*dims.h;
-    // console.log(height_marker);
-}
-
-function measure(ele) {
-    var w = ele.width();
-    var h = ele.height();
-    
-    return {w:w, h:h,a:w/h};
+    height_marker += scale*ele.height();
 }
 
 /* Cross browser CSS3 functions */                 
