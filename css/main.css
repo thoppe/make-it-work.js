@@ -13,17 +13,32 @@ body {
 }
 
 /* Header */
-header h1 {
+header h1, header h2 {
     font-style: normal;
-    font-size: 2em;
     letter-spacing: 1px;
 }
+
+header h1 {
+    font-size: 2em;
+}
+
+header h2 {
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.5em;
+}
+
 
 header h1 em {
     letter-spacing: -2px;
     font-weight: 300;
     font-style: normal;
     font-size: 160%;
+}
+
+
+header a {
+    text-decoration:none;
 }
 
 
@@ -46,6 +61,7 @@ header h1 em {
 .shiny {
     line-height:1.25em;
     opacity:.75;
+    margin-bottom:3.0em;
 }
 
 .shiny :nth-child(even) {
