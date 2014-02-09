@@ -16,7 +16,7 @@ commit:
 push:
 	make
 	git status
-	git add Makefile
+	git add Makefile README.md
 	git add *.js css/*.css *.html
 	git commit -a
 	git push
