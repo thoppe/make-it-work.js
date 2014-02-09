@@ -1,3 +1,4 @@
+var default_line_text = "empty text line";
 var height_marker;
 
 $(document).ready(function() {
@@ -10,6 +11,11 @@ $(document).ready(function() {
 	set_box_attr($(this));});
 
     size_drawbox();
+
+    // Move cursor to the first editable field
+    boxes = $('.box[contenteditable="true"]');
+    if(boxes.length) boxes[0].focus();
+
 }); 
 
 $(window).on("load", function() { 
@@ -39,7 +45,6 @@ function set_box_attr(ele) {
 
 };
 
-default_line_text = "empty text line";
 function empty_box() {
     var ele = $('<div class="box"></div>');
     ele.text(default_line_text);
@@ -67,7 +72,7 @@ function box_keydown(event) {
     }
 
     if(event.which == 40) {
-	event.preventDefault(); // Suppress the up arrow
+	event.preventDefault(); 
 	$(this).next().focus();
     }
 }
