@@ -1,7 +1,6 @@
 var height_marker;
 
 $(document).ready(function() {
-
     console.log("document ready");
     var boxes = $("#drawbox").children('.box');
 
@@ -45,19 +44,22 @@ function check_add_box(event) {
 }
 
 function size_drawbox() {
-    height_marker = 0;
     var target = $("#drawbox");
     var boxes = target.children('.box');
     boxes.each(remove_empty);
+
+    height_marker = 0;
     boxes.each(size_width);
+
+    target.height(height_marker);
 }
 
-
+// Remove a box if the contents are empty
 function remove_empty() {
     var text = $(this).text().trim();
    
     if (text == '') {
-	console.log("Killed a div");
+	//console.log("Removed a box");
 	$(this).remove();
 	size_drawbox();
     }
@@ -69,7 +71,6 @@ function size_width() {
     ele = $(this);
     parent = ele.closest("#drawbox");
     target_width = parent.width();
-    console.log(target_width);
     
     var dims = measure(ele);
     var scale = target_width/dims.w;
